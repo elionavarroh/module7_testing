@@ -91,7 +91,7 @@ export function mostrarCartaNuevo(urlCarta) {
   };
 };
 
-//Creamos una función que agrupa y llama a todas las funciones que se necesitan para pedir la carta. Esta es la función de pedir carta.
+//Función que agrupa y llama
 function pideCarta() {
   const numeroAleatorio = dameNumeroAleatorio();
   const carta = dameValorCarta(numeroAleatorio);
@@ -104,7 +104,7 @@ function pideCarta() {
   gestionarPartida();
 };
 
-//Función que agrupa y llama a las funciones nuevas
+//Función que agrupa y llama 2.0
 function pideCartaNuevo() {
   const numeroAleatorioNuevo = dameNumeroAleatorioNuevo();
   const cartaNuevo = dameValorCartaNuevo(numeroAleatorioNuevo);
