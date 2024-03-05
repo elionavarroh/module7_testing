@@ -2,117 +2,63 @@ import { expect } from "vitest";
 import {
   dameValorCarta,
   dameNumeroAleatorio,
-  dameNumeroAleatorioNuevo,
-  dameValorCartaNuevo,
   damePuntoDeLaCarta,
-  damePuntoDeLaCartaNuevo,
+  numeroAleatorio,
 } from "./motor.js"
 
 //Valores de la carta
 describe("dameValorCarta", () => {
-  it("Valor menor a 7", () => {
+  it("Debería devolver 3 como valor esperado, cuando el número aleatorio es 3", () => {
     // Arrange
-    const value = 3
-    const expected = 3
+    const numeroAleatorio = 3;
+    const resultadoEsperado = 3;
     // Act
-    const result = dameValorCarta(value);
+    const result = dameValorCarta(numeroAleatorio);
     // Assert
-    expect(result).toBe(expected)
+    expect(result).toBe(resultadoEsperado);
   }),
-    it("El valor es 7", () => {
+    it("Debería devolver un 10 como valor esperado, cuando el número aleatorio es un 8", () => {
       // Arrange
-      const value = 7
-      const expected = 7
+      const numeroAleatorio = 8;
+      const resultadoEsperado = 10;
       // Act
-      const result = dameValorCarta(value);
+      const result = dameValorCarta(numeroAleatorio);
       // Assert
-      expect(result).toBe(expected)
+      expect(result).toBe(resultadoEsperado);
     })
-});
-
-describe("dameValorCartaNuevo", () => {
-  it("Valor menor a 7", () => {
-    // Arrange
-    const value = 3
-    const expected = 3
-    // Act
-    const result = dameValorCartaNuevo(value);
-    // Assert
-    expect(result).toBe(expected)
-  })
-  it("El valor es 7", () => {
-    // Arrange
-    const value = 7
-    const expected = 7
-    // Act
-    const result = dameValorCarta(value);
-    // Assert
-    expect(result).toBe(expected)
-  })
 });
 
 //Generación de números aleatorios
 describe("dameNumeroAleatorio", () => {
-  it("Genera un número aleatorio que el resultado que se espera es de 10", () => {
+  it("Debería devolve un 10 como resultado esperado, cuando el número aleatorio es 0,999", () => {
     // Arrange
+    const resultadoEsperado = 10;
     vi.spyOn(global.Math, 'random').mockReturnValue(0.999);
     // Act
-    const result = dameNumeroAleatorio();
+    const result = dameNumeroAleatorio(numeroAleatorio);
     // Assert
-    expect(result).toBe(10)
-  })
-});
-
-describe("dameNumeroAleatorioNuevo", () => {
-  it("Genera un número aleatorio que el resultado que se espera es de 10", () => {
-    // Arrange
-    vi.spyOn(global.Math, 'random').mockReturnValue(0.999);
-    // Act
-    const result = dameNumeroAleatorioNuevo();
-    // Assert
-    expect(result).toBe(10)
+    expect(result).toBe(resultadoEsperado);
   })
 });
 
 //Puntos de la carta
 describe("damePuntoDeLaCarta", () => {
-  it("Si la carta es mayor que 7", () => {
+  it("Debería de devolver 0.5 como valor esperado, cuando la carta sea 10", () => {
     // Arrange
-    const value = 0.5
-    const expected = 0.5
+    const numeroAleatorio = 10;
+    const resultadoEsperado = 0.5;
     // Act
-    const result = damePuntoDeLaCarta(value);
+    const result = damePuntoDeLaCarta(numeroAleatorio);
     // Assert
-    expect(result).toBe(expected)
+    expect(result).toBe(resultadoEsperado);
   })
-  it("Si la carta es menor que 7", () => {
+  it("Debería de devolver 3 como valor esperado, cuando la carta sea 3", () => {
     // Arrange
-    const value = 2
-    const expected = 2
+    const numeroAleatorio = 3;
+    const resultadoEsperado = 3;
     // Act
-    const result = damePuntoDeLaCarta(value);
+    const result = damePuntoDeLaCarta(numeroAleatorio);
     // Assert
-    expect(result).toBe(expected)
-  })
-});
-
-describe("damePuntoDeLaCartaNuevo", () => {
-  it("Si la carta es mayor que 7", () => {
-    // Arrange
-    const value = 0.5
-    const expected = 0.5
-    // Act
-    const result = damePuntoDeLaCartaNuevo(value);
-    // Assert
-    expect(result).toBe(expected)
-  })
-  it("Si la carta es menor que 7", () => {
-    // Arrange
-    const value = 2
-    const expected = 2
-    // Act
-    const result = damePuntoDeLaCartaNuevo(value);
-    // Assert
-    expect(result).toBe(expected)
+    expect(result).toBe(resultadoEsperado);
   })
 });
