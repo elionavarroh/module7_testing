@@ -4,7 +4,12 @@ import {
   dameNumeroAleatorio,
   damePuntoDeLaCarta,
   numeroAleatorio,
+  obtenerEstadoPartida,
 } from "./motor.js"
+
+import {
+  partida,
+} from "./modelo.js"
 
 //Valores de la carta
 describe("dameValorCarta", () => {
@@ -62,3 +67,34 @@ describe("damePuntoDeLaCarta", () => {
     expect(result).toBe(resultadoEsperado);
   })
 });
+
+//Obtener estado de la partida
+describe("obtenerEstadoPartida", () => {
+  it("Debería devolver ganar cuando punto.puntuacion es igual a 7.5", () => {
+    //Arrange
+    const estadoEsperado = "ganar";
+    vi.spyOn(partida, "puntuacion", "get").mockReturnValue(7.5);
+    //Act
+    const resultado = obtenerEstadoPartida();
+    //Assert
+    expect(resultado).toBe(estadoEsperado);
+  })
+  it("Debería devolver perder cuando punto.puntuacion es mayor que 7.5", () => {
+    //Arrange
+    const estadoEsperado = "perder";
+    vi.spyOn(partida, "puntuacion", "get").mockReturnValue(10);
+    //Act
+    const resultado = obtenerEstadoPartida();
+    //Assert
+    expect(resultado).toBe(estadoEsperado);
+  })
+  it("Debería devolver puntos por debajo de lo mínimo cuando es menor que 7.5", () => {
+    //Arrange
+    const estadoEsperado = "puntos por debajo de lo mínimo";
+    vi.spyOn(partida, "puntuacion", "get").mockReturnValue(5);
+    //Act
+    const resultado = obtenerEstadoPartida();
+    //Assert
+    expect(resultado).toBe(estadoEsperado);
+  })
+})

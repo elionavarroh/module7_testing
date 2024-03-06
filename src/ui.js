@@ -15,6 +15,7 @@ import {
   dameValorCartaNuevo,
   damePuntoDeLaCartaNuevo,
   sumarPuntosNuevo,
+  obtenerEstadoPartida,
 } from './motor.js'
 
 //Primera parte
@@ -145,10 +146,10 @@ export function cargarPartida() {
 };
 
 export const gestionarPartida = () => {
-  if (partida.puntuacion === 7.5) {
+  if (obtenerEstadoPartida() === "ganar") {
     return ganarPartida();
   }
-  if (partida.puntuacion > 7.5) {
+  if (obtenerEstadoPartida() === "perder") {
     return perderPartida();
   };
 };

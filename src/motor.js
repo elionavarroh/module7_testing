@@ -57,3 +57,15 @@ export const damePuntoDeLaCartaNuevo = (carta) => {
 export const sumarPuntosNuevo = (puntosParaSumar) => {
   return partida.puntuacion + puntosParaSumar;
 };
+
+//Obtener estado de la partida
+
+export const obtenerEstadoPartida = () => {
+  if (partida.puntuacion === 7.5) {
+    return "ganar";
+  }
+  if (partida.puntuacion > 7.5) {
+    return "perder"
+  } 
+    return "puntos por debajo de lo mínimo"
+};
